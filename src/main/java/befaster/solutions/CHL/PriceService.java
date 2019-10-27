@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class PriceService {
-    private ProductList productList;
     private List<Offer> offers;
 
     // this all assumes this data would come from somewhere else and not the constructor...
     public PriceService() {
-        this.productList = new ProductList();
         this.offers = new ArrayList<>();
         this.offers.add(new Offer('A', 3, 130f));
         this.offers.add(new Offer('B', 2, 45f));
@@ -36,4 +34,5 @@ public class PriceService {
         return offerPrice + product.getPrice() * qty;
     }
 }
+
 
