@@ -38,34 +38,32 @@ public class FreeProductOfferService {
             Integer qty = cartProduct.getValue();
 
             Optional<FreeProductOffer> freeProductOffer = getFreeProductOffer(product.getSku(), qty);
-            if (!freeProductOffer.isPresent() || qty < freeProductOffer.get().getRequiredQty()) {
-                newCart.put(product, qty);
-                continue;
-            }
 
-            Product freeProduct = productList.getProduct(freeProductOffer.get().getOfferSku());
+            if (freeProductOffer.isPresent() && qty >= freeProductOffer.get().getRequiredQty()) {
+                Product freeProduct = productList.getProduct(freeProductOffer.get().getOfferSku());
 
-            if (cart.containsKey(freeProduct)) {
-                // 4 E == 2B free
-                int eligibleOfferCount = qty / freeProductOffer.get().getRequiredQty();
+                if (cart.containsKey(freeProduct)) {
+                    // 4 E == 2B free
+                    int eligibleOfferCount = qty / freeProductOffer.get().getRequiredQty();
 
-                // we will get this amount of free product
-                int qtyFree = eligibleOfferCount * freeProductOffer.get().getOfferQty();
-                int qtyToPay = cart.get(freeProduct) - qtyFree;
-                if (qtyToPay < 0) {
-                    qtyToPay = 0;
+                    // we will get this amount of free product
+                    int qtyFree = eligibleOfferCount * freeProductOffer.get().getOfferQty();
+                    int qtyToPay = cart.get(freeProduct) - qtyFree;
+                    if (qtyToPay < 0) {
+                        qtyToPay = 0;
+                    }
+
+                    newCart.put(freeProduct, qtyToPay);
                 }
-
-                newCart.put(product, qtyToPay);
-            } else {
-                newCart.put(product, qty);
             }
 
+            newCart.put(product, qty);
         }
 
         return newCart;
     }
 }
+
 
 
 
