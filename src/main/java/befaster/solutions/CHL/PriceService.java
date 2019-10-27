@@ -39,15 +39,17 @@ public class PriceService {
         Optional<Offer> offer = getOffer(product, qty);
         float offerPrice = 0f;
 
-        if (offer.isPresent()) {
+        while (offer.isPresent()) {
             int qtyOnOffer = qty / offer.get().getQty();
             offerPrice += offer.get().getOfferPrice() * qtyOnOffer;
             qty = qty - (qtyOnOffer * offer.get().getQty());
+            offer = getOffer(product, qty);
         }
 
         return offerPrice + product.getPrice() * qty;
     }
 }
+
 
 
 
