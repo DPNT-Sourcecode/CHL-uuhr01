@@ -14,6 +14,13 @@ public class PriceService {
         this.offers.add(new Offer('A', 3, 130f));
         this.offers.add(new Offer('A', 5, 200f));
         this.offers.add(new Offer('B', 2, 45f));
+        this.offers.add(new Offer('H', 5, 45f));
+        this.offers.add(new Offer('H', 10, 80f));
+        this.offers.add(new Offer('K', 2, 150f));
+        this.offers.add(new Offer('P', 5, 200f));
+        this.offers.add(new Offer('Q', 3, 80f));
+        this.offers.add(new Offer('V', 2, 90f));
+        this.offers.add(new Offer('V', 3, 130f));
     }
 
     public Optional<Offer> getOffer(Product product, int qty) {
@@ -49,3 +56,4 @@ public class PriceService {
         return offerPrice + product.getPrice() * qty;
     }
 }
+

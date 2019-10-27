@@ -51,6 +51,13 @@ public class CheckliteSolutionTest {
         assertThat(checkliteSolution.checklite("FFFFFFAAAAA"), is(240f));
         assertThat(checkliteSolution.checklite("FFFFFFAAAAABB"), is(285f));
         assertThat(checkliteSolution.checklite("FFFFFFAAAAABBEE"), is(350f));
+
+        assertThat(checkliteSolution.checklite("UUU"), is(120f));
+        assertThat(checkliteSolution.checklite("UUUU"), is(120f));
+
+        assertThat(checkliteSolution.checklite("VV"), is(90f));
+        assertThat(checkliteSolution.checklite("VVV"), is(130f));
     }
 
 }
+

@@ -11,6 +11,9 @@ public class FreeProductOfferService {
         this.freeProductOffers = new ArrayList<>();
         this.freeProductOffers.add(new FreeProductOffer('E', 2, 'B', 1));
         this.freeProductOffers.add(new FreeProductOffer('F', 3, 'F', 1));
+        this.freeProductOffers.add(new FreeProductOffer('N', 3, 'M', 1));
+        this.freeProductOffers.add(new FreeProductOffer('R', 3, 'Q', 1));
+        this.freeProductOffers.add(new FreeProductOffer('U', 4, 'U', 1));
     }
 
     public Optional<FreeProductOffer> getFreeProductOffer(Character sku, int requiredQty) {
@@ -22,7 +25,6 @@ public class FreeProductOfferService {
 
         return Optional.empty();
     }
-
 
     public Map<Product, Integer> getDiscountedCart(final Map<Product, Integer> cart) {
         Map<Product, Integer> newCart = new HashMap<>();
@@ -65,3 +67,4 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
+
