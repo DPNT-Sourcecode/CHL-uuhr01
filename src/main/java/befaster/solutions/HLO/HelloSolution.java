@@ -4,7 +4,7 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class HelloSolution {
     public String hello(String helloMessage) {
-        return helloMessage;
+        return "Hello, World!";
     }
 }
 
