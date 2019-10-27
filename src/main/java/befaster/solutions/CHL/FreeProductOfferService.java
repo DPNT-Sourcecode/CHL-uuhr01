@@ -23,7 +23,6 @@ public class FreeProductOfferService {
     }
 
 
-
     public Map<Product, Integer> getDiscountedCart(final Map<Product, Integer> cart) {
         Map<Product, Integer> newCart = new HashMap<>();
 
@@ -63,7 +62,3 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
-
-
-
-
