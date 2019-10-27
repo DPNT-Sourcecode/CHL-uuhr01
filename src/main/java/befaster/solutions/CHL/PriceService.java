@@ -24,7 +24,7 @@ public class PriceService {
                 continue;
             }
 
-            if (qty >= offer.getQty()) {
+            if (offer.getQty() <= qty) {
                 if (chosenOffer != null && chosenOffer.getOfferPrice() < offer.getOfferPrice()) {
                     continue;
                 }
@@ -48,5 +48,6 @@ public class PriceService {
         return offerPrice + product.getPrice() * qty;
     }
 }
+
 
 
