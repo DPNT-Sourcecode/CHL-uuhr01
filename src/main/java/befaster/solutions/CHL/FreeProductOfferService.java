@@ -57,11 +57,14 @@ public class FreeProductOfferService {
                 }
             }
 
-            newCart.put(product, qty);
+            if (!newCart.containsKey(product)) {
+                newCart.put(product, qty);
+            }
         }
 
         return newCart;
     }
 }
+
 
 
