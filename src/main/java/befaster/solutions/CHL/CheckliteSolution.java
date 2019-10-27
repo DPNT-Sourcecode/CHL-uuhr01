@@ -44,4 +44,3 @@ public class CheckliteSolution {
         return cartPrice;
     }
 }
-

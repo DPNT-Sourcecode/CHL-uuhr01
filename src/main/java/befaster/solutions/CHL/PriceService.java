@@ -49,8 +49,3 @@ public class PriceService {
         return offerPrice + product.getPrice() * qty;
     }
 }
-
-
-
-
-

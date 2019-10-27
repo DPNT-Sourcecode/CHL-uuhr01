@@ -45,7 +45,3 @@ public class PriceServiceTest {
         assertThat(priceService.getTotalProductPrice(product, 11), is(450f));
     }
 }
-
-
-
-
