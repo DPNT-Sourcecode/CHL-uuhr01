@@ -25,5 +25,5 @@ public class CheckliteSolutionTest {
         assertThat(checkliteSolution.checklite(""), is(0f));
         assertThat(checkliteSolution.checklite("123"), is(-1f));
     }
-}
 
+}
