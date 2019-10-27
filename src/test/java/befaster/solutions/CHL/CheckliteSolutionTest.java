@@ -1,19 +1,25 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+package befaster.solutions.CHL;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-@RunWith(Arquillian.class)
+
 public class CheckliteSolutionTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(befaster.solutions.CHL.CheckliteSolution.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+
+    CheckliteSolution checkliteSolution;
+
+    @Before
+    public void setup() {
+        checkliteSolution = new CheckliteSolution();
     }
 
+    @Test
+    public void checklite() {
+        assertThat(checkliteSolution.checklite("AB"), is(2));
+    }
 }
+
