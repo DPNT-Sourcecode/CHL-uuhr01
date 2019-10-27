@@ -20,7 +20,7 @@ public class CheckliteSolutionTest {
     @Test
     public void checklite() {
         assertThat(checkliteSolution.checklite("AB"), is(80f));
-        assertThat(checkliteSolution.checklite("ABE"), is(-1f));
+        assertThat(checkliteSolution.checklite("ABE"), is(120f));
         assertThat(checkliteSolution.checklite("ABC"), is(100f));
         assertThat(checkliteSolution.checklite(""), is(0f));
         assertThat(checkliteSolution.checklite("123"), is(-1f));

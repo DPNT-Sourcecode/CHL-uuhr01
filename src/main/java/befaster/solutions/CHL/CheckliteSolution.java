@@ -2,25 +2,25 @@ package befaster.solutions.CHL;
 
 import befaster.runner.SolutionNotImplementedException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CheckliteSolution {
 
     private ProductList productList;
     private PriceService priceService;
+    private FreeProductOfferService freeProductOfferService;
 
     public CheckliteSolution() {
         this.productList = new ProductList();
         this.priceService = new PriceService();
+        this.freeProductOfferService = new FreeProductOfferService();
     }
 
     public Float checklite(String skus) {
         Float cartPrice = 0f;
 
-        Map<Product, Integer> cartProducts = new HashMap<>();
+        Map<Product, Integer> cart = new HashMap<>();
 
         for (int i = 0; i < skus.length(); i++) {
             Character sku = skus.charAt(i);
@@ -30,17 +30,13 @@ public class CheckliteSolution {
                 return -1f;
             }
 
-            cartProducts.put(product, cartProducts.getOrDefault(product, 0) + 1);
+            cart.put(product, cart.getOrDefault(product, 0) + 1);
         }
 
-        // map of products -> price
-        // E , 2 -> 80
-        // B -> -45- 0
-
-        for (Map.Entry<Product, Integer> cartProduct : cartProducts.entrySet()) {
+        for (Map.Entry<Product, Integer> cartProduct : cart.entrySet()) {
             cartPrice += priceService.getTotalProductPrice(cartProduct.getKey(), cartProduct.getValue());
         }
 
-        return cartPrice;
+        return cartPrice - freeProductOfferService.getPriceDiscount(cart);
     }
 }
