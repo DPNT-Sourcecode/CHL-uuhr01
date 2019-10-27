@@ -22,45 +22,45 @@ public class FreeProductOfferService {
         return Optional.empty();
     }
 
-    /**
-     * discount price is the amount of money that you can discount _if_ you have the discounted product in your cart
-     *
-     * @param cart
-     * @return
-     */
-    public Float getPriceDiscount(final Map<Product, Integer> cart) {
-        Float discount = 0f;
+
+    public Map<Product, Integer> getDiscountedCart(final Map<Product, Integer> cart) {
+        Map<Product, Integer> newCart = new HashMap<>();
 
         for (Map.Entry<Product, Integer> cartProduct : cart.entrySet()) {
             Product product = cartProduct.getKey();
+
+            if (newCart.containsKey(product)) {
+                // product already processed
+                continue;
+            }
+
             Integer qty = cartProduct.getValue();
-            Integer eligibleOfferCount = 0;
 
             Optional<FreeProductOffer> freeProductOffer = getFreeProductOffer(product.getSku(), qty);
-            if (!freeProductOffer.isPresent()) {
+            if (!freeProductOffer.isPresent() || qty < freeProductOffer.get().getRequiredQty()) {
+                newCart.put(product, qty);
                 continue;
             }
-
-            if (qty < freeProductOffer.get().getRequiredQty()) {
-                continue;
-            }
-
 
             if (cart.containsKey(freeProductOffer.get().getOfferSku())) {
                 // 4 E == 2B free
-                eligibleOfferCount = qty / freeProductOffer.get().getRequiredQty();
+                int eligibleOfferCount = qty / freeProductOffer.get().getRequiredQty();
 
-                int freeQty = qty - (eligibleOfferCount * freeProductOffer.get().getOfferQty());
-                if (freeQty < 0) {
-                    freeQty = 0;
+                // we will get this amount of free product
+                int qtyFree = eligibleOfferCount * freeProductOffer.get().getOfferQty();
+
+                if (qtyFree < 0) {
+                    qtyFree = 0;
                 }
 
-                // we have 4 in B, 2 will be free
-                discount += (productList.getProduct(freeProductOffer.get().getOfferSku()).getPrice() * freeQty);
+                newCart.put(product, qtyFree);
+            } else {
+                newCart.put(product, qty);
             }
 
         }
 
-        return discount;
+        return newCart;
     }
 }
+

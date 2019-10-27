@@ -33,10 +33,14 @@ public class CheckliteSolution {
             cart.put(product, cart.getOrDefault(product, 0) + 1);
         }
 
+        // we need to remove the qty for free product offers from the cart
+        cart = freeProductOfferService.getDiscountedCart(cart);
+
         for (Map.Entry<Product, Integer> cartProduct : cart.entrySet()) {
             cartPrice += priceService.getTotalProductPrice(cartProduct.getKey(), cartProduct.getValue());
         }
 
-        return cartPrice - freeProductOfferService.getPriceDiscount(cart);
+        return cartPrice;
     }
 }
+
