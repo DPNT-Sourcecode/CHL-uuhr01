@@ -33,6 +33,10 @@ public class CheckliteSolution {
             cartProducts.put(product, cartProducts.getOrDefault(product, 0) + 1);
         }
 
+        // map of products -> price
+        // E , 2 -> 80
+        // B -> -45- 0
+
         for (Map.Entry<Product, Integer> cartProduct : cartProducts.entrySet()) {
             cartPrice += priceService.getTotalProductPrice(cartProduct.getKey(), cartProduct.getValue());
         }
@@ -40,3 +44,4 @@ public class CheckliteSolution {
         return cartPrice;
     }
 }
+

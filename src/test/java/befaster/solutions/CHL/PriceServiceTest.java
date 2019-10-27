@@ -21,10 +21,9 @@ public class PriceServiceTest {
 
     @Test
     public void getOffer() {
-        Optional<Offer> offer = priceService.getOffer(productList.getProduct('A'));
-        assertThat(offer.isPresent(), is(true));
-
-        assertThat(offer.get().getOfferPrice(), is(130f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 3).get().getOfferPrice(), is(130f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 5).get().getOfferPrice(), is(200f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 6).get().getOfferPrice(), is(200f));
     }
 
     @Test
@@ -39,3 +38,4 @@ public class PriceServiceTest {
         assertThat(priceService.getTotalProductPrice(product, 6), is(260f));
     }
 }
+

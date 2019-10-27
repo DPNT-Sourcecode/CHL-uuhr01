@@ -12,17 +12,31 @@ public class PriceService {
     public PriceService() {
         this.offers = new ArrayList<>();
         this.offers.add(new Offer('A', 3, 130f));
+        this.offers.add(new Offer('A', 5, 200f));
         this.offers.add(new Offer('B', 2, 45f));
     }
 
-    public Optional<Offer> getOffer(Product product) {
-        return offers.stream()
-                .filter(offer -> offer.getSku().equals(product.getSku()))
-                .findFirst();
+    public Optional<Offer> getOffer(Product product, int qty) {
+        Offer chosenOffer = null;
+
+        for (Offer offer : offers) {
+            if (!offer.getSku().equals(product.getSku())) {
+                continue;
+            }
+
+            if (offer.getQty() >= qty) {
+                if (chosenOffer != null && chosenOffer.getOfferPrice() < offer.getOfferPrice()) {
+                    continue;
+                }
+                chosenOffer = offer;
+            }
+        }
+
+        return Optional.ofNullable(chosenOffer);
     }
 
     public Float getTotalProductPrice(Product product, int qty) {
-        Optional<Offer> offer = getOffer(product);
+        Optional<Offer> offer = getOffer(product, qty);
         float offerPrice = 0f;
 
         if (offer.isPresent()) {
@@ -34,3 +48,4 @@ public class PriceService {
         return offerPrice + product.getPrice() * qty;
     }
 }
+
