@@ -36,10 +36,16 @@ public class PriceServiceTest {
         assertThat(priceService.getTotalProductPrice(product, 2), is(100f));
         assertThat(priceService.getTotalProductPrice(product, 3), is(130f));
         assertThat(priceService.getTotalProductPrice(product, 4), is(180f));
-        assertThat(priceService.getTotalProductPrice(product, 5), is(230f));
-        assertThat(priceService.getTotalProductPrice(product, 6), is(260f));
+        assertThat(priceService.getTotalProductPrice(product, 5), is(200f));
+        assertThat(priceService.getTotalProductPrice(product, 6), is(250f));
+        assertThat(priceService.getTotalProductPrice(product, 7), is(300f));
+        assertThat(priceService.getTotalProductPrice(product, 8), is(330f));
+        assertThat(priceService.getTotalProductPrice(product, 9), is(380f));
+        assertThat(priceService.getTotalProductPrice(product, 10), is(400f));
+        assertThat(priceService.getTotalProductPrice(product, 11), is(450f));
     }
 }
+
 
 
 
