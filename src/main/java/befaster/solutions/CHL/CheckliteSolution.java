@@ -13,19 +13,27 @@ public class CheckliteSolution {
         this.productList = new ProductList();
     }
 
-    public Integer checklite(String skus) {
-        int count = 0;
+    public Float checklite(String skus) {
+        Float cart = 0f;
         String testSkus = skus.toUpperCase();
+
+        // count products by sku
+        // check price (with offer) for sku
+
 
         for (int i = 0; i < testSkus.length(); i++) {
             Character sku = testSkus.charAt(i);
-            if (productList.isProduct(sku)) {
-                count++;
+
+
+            Product product = productList.getProduct(sku);
+            if (product != null) {
+                cart += product.getPrice();
             } else {
-                return -1;
+                return -1f;
             }
         }
 
-        return count;
+        return cart;
     }
 }
+

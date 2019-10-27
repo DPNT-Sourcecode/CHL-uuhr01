@@ -1,26 +1,31 @@
 package befaster.solutions.CHL;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductList {
-    private List<Product> products;
+    private Map<Character, Product> products;
 
     public ProductList() {
-        this.products = new ArrayList<>();
-        this.products.add(new Product('A', 50f));
-        this.products.add(new Product('B', 30f));
-        this.products.add(new Product('C', 20f));
-        this.products.add(new Product('D', 10f));
+        this.products = new HashMap<>();
+        this.addProduct('A', 50f);
+        this.addProduct('B', 30f);
+        this.addProduct('C', 20f);
+        this.addProduct('D', 10f);
+    }
+
+    public void addProduct(Character sku, Float price) {
+        this.products.put(sku, new Product(sku, price));
     }
 
     public boolean isProduct(Character sku) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getSku().equals(sku)) {
-                return true;
-            }
-        }
+        return products.containsKey(sku);
+    }
 
-        return false;
+    public Product getProduct(Character sku) {
+        return products.getOrDefault(sku, null);
     }
 }
+
