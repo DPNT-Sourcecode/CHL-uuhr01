@@ -23,6 +23,7 @@ public class FreeProductOfferService {
     }
 
 
+
     public Map<Product, Integer> getDiscountedCart(final Map<Product, Integer> cart) {
         Map<Product, Integer> newCart = new HashMap<>();
 
@@ -42,7 +43,9 @@ public class FreeProductOfferService {
                 continue;
             }
 
-            if (cart.containsKey(freeProductOffer.get().getOfferSku())) {
+            Product freeProduct = productList.getProduct(freeProductOffer.get().getOfferSku());
+
+            if (cart.containsKey(freeProduct)) {
                 // 4 E == 2B free
                 int eligibleOfferCount = qty / freeProductOffer.get().getRequiredQty();
 
@@ -63,4 +66,5 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
+
 
