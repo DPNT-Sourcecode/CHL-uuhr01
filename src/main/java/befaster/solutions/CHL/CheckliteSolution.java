@@ -19,12 +19,11 @@ public class CheckliteSolution {
 
     public Float checklite(String skus) {
         Float cartPrice = 0f;
-        String testSkus = skus.toUpperCase();
 
         Map<Product, Integer> cartProducts = new HashMap<>();
 
-        for (int i = 0; i < testSkus.length(); i++) {
-            Character sku = testSkus.charAt(i);
+        for (int i = 0; i < skus.length(); i++) {
+            Character sku = skus.charAt(i);
 
             Product product = productList.getProduct(sku);
             if (product == null) {
@@ -41,4 +40,5 @@ public class CheckliteSolution {
         return cartPrice;
     }
 }
+
 
