@@ -11,7 +11,7 @@ public class ProductList {
         this.addProduct('A', 50f);
         this.addProduct('B', 30f);
         this.addProduct('C', 20f);
-        this.addProduct('D', 10f);
+        this.addProduct('D', 15f);
     }
 
     public void addProduct(Character sku, Float price) {
@@ -26,4 +26,5 @@ public class ProductList {
         return products.getOrDefault(sku, null);
     }
 }
+
 
