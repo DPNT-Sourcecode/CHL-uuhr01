@@ -30,9 +30,10 @@ public class PriceService {
         if (offer.isPresent()) {
             int qtyOnOffer = qty / offer.get().getQty();
             offerPrice += offer.get().getOfferPrice() * qtyOnOffer;
-            qty = qty - qtyOnOffer;
+            qty = qty - (qtyOnOffer * offer.get().getQty());
         }
 
         return offerPrice + product.getPrice() * qty;
     }
 }
+

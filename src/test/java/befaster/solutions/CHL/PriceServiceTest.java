@@ -31,11 +31,12 @@ public class PriceServiceTest {
     public void getTotalProductPrice() {
         Product product = productList.getProduct('A');
 
-        //assertThat(priceService.getTotalProductPrice(product, 1), is(50f));
-        //assertThat(priceService.getTotalProductPrice(product, 2), is(100f));
+        assertThat(priceService.getTotalProductPrice(product, 1), is(50f));
+        assertThat(priceService.getTotalProductPrice(product, 2), is(100f));
         assertThat(priceService.getTotalProductPrice(product, 3), is(130f));
         assertThat(priceService.getTotalProductPrice(product, 4), is(180f));
         assertThat(priceService.getTotalProductPrice(product, 5), is(230f));
         assertThat(priceService.getTotalProductPrice(product, 6), is(260f));
     }
 }
+
