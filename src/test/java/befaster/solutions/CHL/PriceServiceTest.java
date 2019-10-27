@@ -39,4 +39,3 @@ public class PriceServiceTest {
         assertThat(priceService.getTotalProductPrice(product, 6), is(260f));
     }
 }
-

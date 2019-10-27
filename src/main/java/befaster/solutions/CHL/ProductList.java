@@ -26,5 +26,3 @@ public class ProductList {
         return products.getOrDefault(sku, null);
     }
 }
-
-
