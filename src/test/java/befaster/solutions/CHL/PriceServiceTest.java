@@ -21,10 +21,10 @@ public class PriceServiceTest {
 
     @Test
     public void getOffer() {
-        //assertThat(priceService.getOffer(productList.getProduct('A'), 2).isPresent(), is(false));
-        //assertThat(priceService.getOffer(productList.getProduct('A'), 3).get().getOfferPrice(), is(130f));
-        //assertThat(priceService.getOffer(productList.getProduct('A'), 4).get().getOfferPrice(), is(130f));
-        //assertThat(priceService.getOffer(productList.getProduct('A'), 5).get().getOfferPrice(), is(200f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 2).isPresent(), is(false));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 3).get().getOfferPrice(), is(130f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 4).get().getOfferPrice(), is(130f));
+        assertThat(priceService.getOffer(productList.getProduct('A'), 5).get().getOfferPrice(), is(200f));
         assertThat(priceService.getOffer(productList.getProduct('A'), 6).get().getOfferPrice(), is(200f));
     }
 
@@ -40,5 +40,6 @@ public class PriceServiceTest {
         assertThat(priceService.getTotalProductPrice(product, 6), is(260f));
     }
 }
+
 
 
