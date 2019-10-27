@@ -15,8 +15,10 @@ public class CheckliteSolution {
 
     public Integer checklite(String skus) {
         int count = 0;
-        for (int i = 0; i < skus.length(); i++) {
-            Character sku = skus.charAt(i);
+        String testSkus = skus.toUpperCase();
+
+        for (int i = 0; i < testSkus.length(); i++) {
+            Character sku = testSkus.charAt(i);
             if (productList.isProduct(sku)) {
                 count++;
             } else {
@@ -27,5 +29,6 @@ public class CheckliteSolution {
         return count;
     }
 }
+
 
 

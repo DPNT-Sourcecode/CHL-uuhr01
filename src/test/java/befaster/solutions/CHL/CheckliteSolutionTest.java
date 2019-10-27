@@ -24,8 +24,9 @@ public class CheckliteSolutionTest {
         assertThat(checkliteSolution.checklite("ABC"), is(3));
         assertThat(checkliteSolution.checklite(""), is(0));
         assertThat(checkliteSolution.checklite("123"), is(-1));
-        assertThat(checkliteSolution.checklite("abc"), is(-1));
+        assertThat(checkliteSolution.checklite("abc"), is(3)); // what about this one..
     }
 }
+
 
 
