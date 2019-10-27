@@ -13,6 +13,7 @@ public class ProductList {
         this.addProduct('C', 20f);
         this.addProduct('D', 15f);
         this.addProduct('E', 40f);
+        this.addProduct('F', 10f);
     }
 
     public void addProduct(Character sku, Float price) {
@@ -27,3 +28,4 @@ public class ProductList {
         return products.getOrDefault(sku, null);
     }
 }
+

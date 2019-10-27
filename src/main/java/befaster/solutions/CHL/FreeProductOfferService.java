@@ -10,6 +10,7 @@ public class FreeProductOfferService {
         this.productList = new ProductList();
         this.freeProductOffers = new ArrayList<>();
         this.freeProductOffers.add(new FreeProductOffer('E', 2, 'B', 1));
+        this.freeProductOffers.add(new FreeProductOffer('F', 3, 'F', 1));
     }
 
     public Optional<FreeProductOffer> getFreeProductOffer(Character sku, int requiredQty) {
@@ -62,4 +63,5 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
+
 
