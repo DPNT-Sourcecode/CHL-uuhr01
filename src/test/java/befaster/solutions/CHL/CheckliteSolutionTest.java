@@ -20,6 +20,12 @@ public class CheckliteSolutionTest {
     @Test
     public void checklite() {
         assertThat(checkliteSolution.checklite("AB"), is(2));
+        assertThat(checkliteSolution.checklite("ABE"), is(-1));
+        assertThat(checkliteSolution.checklite("ABC"), is(3));
+        assertThat(checkliteSolution.checklite(""), is(0));
+        assertThat(checkliteSolution.checklite("123"), is(-1));
+        assertThat(checkliteSolution.checklite("abc"), is(-1));
     }
 }
+
 

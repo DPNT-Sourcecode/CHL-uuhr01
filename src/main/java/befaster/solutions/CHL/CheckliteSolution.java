@@ -7,18 +7,25 @@ import java.util.List;
 
 public class CheckliteSolution {
 
-
+    private ProductList productList;
 
     public CheckliteSolution() {
-
+        this.productList = new ProductList();
     }
 
     public Integer checklite(String skus) {
         int count = 0;
         for (int i = 0; i < skus.length(); i++) {
-            if (skus.charAt(i))
+            Character sku = skus.charAt(i);
+            if (productList.isProduct(sku)) {
+                count++;
+            } else {
+                return -1;
+            }
         }
-        throw new SolutionNotImplementedException();
+
+        return count;
     }
 }
+
 

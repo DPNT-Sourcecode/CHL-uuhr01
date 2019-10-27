@@ -1,19 +1,19 @@
 package befaster.solutions.CHL;
 
 public class Product {
-    private String sku;
+    private Character sku;
     private Float price;
 
-    public Product(String sku, Float price) {
+    public Product(Character sku, Float price) {
         this.sku = sku;
         this.price = price;
     }
 
-    public String getSku() {
+    public Character getSku() {
         return sku;
     }
 
-    public void setSku(String sku) {
+    public void setSku(Character sku) {
         this.sku = sku;
     }
 
@@ -25,4 +25,5 @@ public class Product {
         this.price = price;
     }
 }
+
 
