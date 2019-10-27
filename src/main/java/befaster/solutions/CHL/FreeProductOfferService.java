@@ -51,12 +51,12 @@ public class FreeProductOfferService {
 
                 // we will get this amount of free product
                 int qtyFree = eligibleOfferCount * freeProductOffer.get().getOfferQty();
-
-                if (qtyFree < 0) {
-                    qtyFree = 0;
+                int qtyToPay = cart.get(freeProduct) - qtyFree;
+                if (qtyToPay < 0) {
+                    qtyToPay = 0;
                 }
 
-                newCart.put(product, qtyFree);
+                newCart.put(product, qtyToPay);
             } else {
                 newCart.put(product, qty);
             }
@@ -66,5 +66,6 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
+
 
 
