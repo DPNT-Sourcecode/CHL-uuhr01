@@ -14,7 +14,7 @@ public class FreeProductOfferService {
 
     public Optional<FreeProductOffer> getFreeProductOffer(Character sku, int requiredQty) {
         for (FreeProductOffer freeProductOffer : freeProductOffers) {
-            if (freeProductOffer.getSku().equals(sku) && freeProductOffer.getRequiredQty() == requiredQty) {
+            if (freeProductOffer.getSku().equals(sku) && requiredQty >= freeProductOffer.getRequiredQty()) {
                 return Optional.of(freeProductOffer);
             }
         }
@@ -62,3 +62,4 @@ public class FreeProductOfferService {
         return newCart;
     }
 }
+

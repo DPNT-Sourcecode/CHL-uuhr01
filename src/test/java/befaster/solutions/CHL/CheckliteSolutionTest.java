@@ -19,7 +19,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void checklite() {
-        /*assertThat(checkliteSolution.checklite("AB"), is(80f));
+        assertThat(checkliteSolution.checklite("AB"), is(80f));
         assertThat(checkliteSolution.checklite("ABE"), is(120f));
         assertThat(checkliteSolution.checklite("ABC"), is(100f));
         assertThat(checkliteSolution.checklite(""), is(0f));
@@ -34,12 +34,13 @@ public class CheckliteSolutionTest {
         assertThat(checkliteSolution.checklite("BBE"), is(85f));
         assertThat(checkliteSolution.checklite("BBEE"), is(110f));
         assertThat(checkliteSolution.checklite("EEBB"), is(110f));
-        */
+
 
         assertThat(checkliteSolution.checklite("EEEB"), is(120f)); // 40 + 40 + 40 (free 30)
-        assertThat(checkliteSolution.checklite("EEEEBB"), is(160));
-        assertThat(checkliteSolution.checklite("BEBEEE"), is(160));
+        assertThat(checkliteSolution.checklite("EEEEBB"), is(160f));
+        assertThat(checkliteSolution.checklite("BEBEEE"), is(160f));
     }
 
 }
+
 
